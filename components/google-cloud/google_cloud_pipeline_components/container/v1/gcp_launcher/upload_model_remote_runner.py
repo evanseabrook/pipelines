@@ -61,6 +61,8 @@ def upload_model(
                   executor_input, model_spec))
   }
   print(f"After recursive_remove_empty: {upload_model_request}")
+  
+  upload_model_request['model']['explanation_spec']['metadata'] = model_spec['explanation_spec']['metadata']
 
   try:
     remote_runner = lro_remote_runner.LroRemoteRunner(location)
