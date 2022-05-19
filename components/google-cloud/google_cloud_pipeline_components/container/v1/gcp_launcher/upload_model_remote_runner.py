@@ -52,6 +52,7 @@ def upload_model(
   vertex_uri_prefix = f'https://{api_endpoint}/v1/'
   upload_model_url = f'{vertex_uri_prefix}projects/{project}/locations/{location}/models:upload'
   model_spec = json.loads(payload, strict=False)
+  print(model_spec)
   upload_model_request = {
       # TODO(IronPan) temporarily remove the empty fields from the spec
       'model':
