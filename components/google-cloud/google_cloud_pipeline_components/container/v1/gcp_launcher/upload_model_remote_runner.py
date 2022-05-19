@@ -60,6 +60,7 @@ def upload_model(
               append_unmanaged_model_artifact_into_payload(
                   executor_input, model_spec))
   }
+  print(f"After recursive_remove_empty: {upload_model_request}")
 
   try:
     remote_runner = lro_remote_runner.LroRemoteRunner(location)
