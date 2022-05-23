@@ -61,8 +61,10 @@ def upload_model(
                   executor_input, model_spec))
   }
   
-  # Add explanation_spec details back into the request, as sklearn/xgboost input features can be empty.
-  if ('explanation_spec' in model_spec) and ('metadata' in model_spec['explanation_spec']):
+  # Add explanation_spec details back into the request if metadata is non-empty, as sklearn/xgboost input features can be empty.
+  if (('explanation_spec' in model_spec) and 
+      ('metadata' in model_spec['explanation_spec']) and 
+      model_spec['explanation_spec']['metadata']):
     upload_model_request['model']['explanation_spec']['metadata'] = model_spec['explanation_spec']['metadata']
   
   print(f"After recursive_remove_empty: {upload_model_request}")
